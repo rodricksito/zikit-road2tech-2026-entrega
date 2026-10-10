@@ -1,0 +1,14 @@
+.DS_Store
+.env
+.env.*
+!.env.example
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.pyc
+.claude/settings.local.json
+
+# Salidas locales del detector
+backend/salida/
+.pytest_cache/

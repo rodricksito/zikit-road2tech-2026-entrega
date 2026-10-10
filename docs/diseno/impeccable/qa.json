@@ -1,0 +1,207 @@
+{
+  "widths": [
+    {
+      "width": 320,
+      "positions": {
+        "alerts-section": {
+          "x": 16,
+          "y": 1039.71875,
+          "width": 288,
+          "height": 686.203125
+        },
+        "detail-section": {
+          "x": 16,
+          "y": 1749.921875,
+          "width": 288,
+          "height": 1509.28125
+        },
+        "metrics-section": {
+          "x": 16,
+          "y": 3299.203125,
+          "width": 288,
+          "height": 1674.796875
+        },
+        "detail-action": {
+          "x": 37,
+          "y": 2115.921875,
+          "width": 246,
+          "height": 72
+        }
+      }
+    },
+    {
+      "width": 390,
+      "positions": {
+        "alerts-section": {
+          "x": 16,
+          "y": 930.03125,
+          "width": 358,
+          "height": 644.203125
+        },
+        "detail-section": {
+          "x": 16,
+          "y": 1598.234375,
+          "width": 358,
+          "height": 1324.78125
+        },
+        "metrics-section": {
+          "x": 16,
+          "y": 2963.015625,
+          "width": 358,
+          "height": 1209.796875
+        },
+        "detail-action": {
+          "x": 37,
+          "y": 1943.234375,
+          "width": 316,
+          "height": 48
+        }
+      }
+    },
+    {
+      "width": 740,
+      "positions": {
+        "alerts-section": {
+          "x": 16,
+          "y": 701.65625,
+          "width": 708,
+          "height": 560.203125
+        },
+        "detail-section": {
+          "x": 16,
+          "y": 1285.859375,
+          "width": 708,
+          "height": 1082.390625
+        },
+        "metrics-section": {
+          "x": 16,
+          "y": 2408.25,
+          "width": 708,
+          "height": 1026
+        },
+        "detail-action": {
+          "x": 37,
+          "y": 1585.859375,
+          "width": 666,
+          "height": 24
+        }
+      }
+    },
+    {
+      "width": 1024,
+      "positions": {
+        "alerts-section": {
+          "x": 24,
+          "y": 608.1875,
+          "width": 976,
+          "height": 306.203125
+        },
+        "detail-section": {
+          "x": 24,
+          "y": 938.390625,
+          "width": 976,
+          "height": 625.5
+        },
+        "metrics-section": {
+          "x": 24,
+          "y": 1603.890625,
+          "width": 976,
+          "height": 839
+        },
+        "detail-action": {
+          "x": 49,
+          "y": 1242.390625,
+          "width": 428,
+          "height": 48
+        }
+      }
+    },
+    {
+      "width": 1440,
+      "positions": {
+        "alerts-section": {
+          "x": 48,
+          "y": 608.1875,
+          "width": 260,
+          "height": 686.203125
+        },
+        "detail-section": {
+          "x": 332,
+          "y": 608.1875,
+          "width": 1060,
+          "height": 604.5
+        },
+        "metrics-section": {
+          "x": 48,
+          "y": 1334.390625,
+          "width": 1344,
+          "height": 827
+        },
+        "detail-action": {
+          "x": 357,
+          "y": 912.1875,
+          "width": 517.265625,
+          "height": 48
+        }
+      }
+    }
+  ],
+  "anchors": [
+    {
+      "target": "alerts-section",
+      "focus": "alerts-section",
+      "hash": "#alerts-section",
+      "top": 24.03125
+    },
+    {
+      "target": "detail-section",
+      "focus": "detail-section",
+      "hash": "#detail-section",
+      "top": 24.234375
+    },
+    {
+      "target": "metrics-section",
+      "focus": "metrics-section",
+      "hash": "#metrics-section",
+      "top": 24.015625
+    }
+  ],
+  "consoleErrors": [],
+  "dom": {
+    "order": [
+      "alerts-section",
+      "detail-section",
+      "metrics-section"
+    ],
+    "targets": [
+      {
+        "id": "alerts-section",
+        "tabindex": "-1"
+      },
+      {
+        "id": "detail-section",
+        "tabindex": "-1"
+      },
+      {
+        "id": "metrics-section",
+        "tabindex": "-1"
+      }
+    ]
+  },
+  "afterAlertsTab": {
+    "tag": "BUTTON",
+    "id": "",
+    "alertId": "ficticia-gracko-degradacion_rendimiento"
+  },
+  "contrast": {
+    "checked": 190,
+    "minimum": {
+      "selector": "#alert-count",
+      "text": "3",
+      "ratio": 4.7,
+      "required": 4.5,
+      "font": 13
+    },
+    "failures": []
+  }
+}

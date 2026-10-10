@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <meta
+      name="description"
+      content="Revisa las alertas de tu operación, su evidencia y las acciones sugeridas."
+    />
+    <title>ZIKIT · Monitoreo</title>
+    <link rel="stylesheet" href="styles.css?v=claridad-r31-20261010" />
+    <script defer src="vendor/chart.umd.min.js"></script>
+    <script type="module" src="app.mjs?v=claridad-r31-20261010"></script>
+  </head>
+  <body>
+    <svg
+      class="icon-library"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <symbol id="icon-alert" viewBox="0 0 24 24">
+        <path
+          d="m10.3 4.2-8 14A1.8 1.8 0 0 0 3.9 21h16.2a1.8 1.8 0 0 0 1.6-2.8l-8-14a1.9 1.9 0 0 0-3.4 0Z"
+        />
+        <path d="M12 9v5m0 3v.1" />
+      </symbol>
+      <symbol id="icon-calendar" viewBox="0 0 24 24">
+        <rect x="3" y="5" width="18" height="16" rx="2" />
+        <path d="M16 3v4M8 3v4M3 11h18m-13 5h3" />
+      </symbol>
+      <symbol id="icon-arrow" viewBox="0 0 24 24">
+        <path d="M4 12h16m-6-6 6 6-6 6" />
+      </symbol>
+    </svg>
+    <a class="skip-link" href="#alerts-section">Ir a las alertas</a>
+    <header class="topbar">
+      <a class="brand" href="#monitor" aria-label="ZIKIT, inicio"
+        ><span class="brand-mark" aria-hidden="true">Z</span
+        ><span>ZIKIT</span></a
+      >
+      <div class="topbar-end">
+        <span class="tenant-label" id="tenant-label">Monitoreo</span>
+      </div>
+    </header>
+    <main id="monitor" class="page">
+      <section class="replay-panel" aria-label="Revisar datos en el tiempo">
+        <div class="source-row">
+          <div class="field">
+            <label for="company">Empresa</label
+            ><select id="company" disabled>
+              <option>Cargando…</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="run">Conjunto de datos</label
+            ><select id="run" disabled>
+              <option>Cargando…</option>
+            </select>
+          </div>
+          <p class="source-note" id="source-note">
+            Conectando con el servidor…
+          </p>
+          <button
+            id="kit-toggle"
+            type="button"
+            class="button"
+            aria-expanded="false"
+            aria-controls="kit-panel"
+          >
+            Subir kit
+          </button>
+        </div>
+        <div id="kit-panel" class="kit-panel" hidden>
+          <form id="kit-form" class="kit-form">
+            <div class="field kit-file-field">
+              <label for="kit-file">Archivo del kit</label>
+              <input
+                id="kit-file"
+                name="archivo"
+                type="file"
+                accept=".zip,application/zip"
+                required
+                aria-describedby="kit-help"
+              />
+              <p id="kit-help" class="small">ZIP · Máximo 80 MB</p>
+            </div>
+            <div class="field" id="kit-key-field" hidden>
+              <label for="kit-key">Clave de acceso</label>
+              <input id="kit-key" type="password" autocomplete="off" />
+            </div>
+            <button id="kit-submit" class="button primary" type="submit">
+              Abrir kit
+            </button>
+          </form>
+        </div>
+        <div id="kit-feedback" class="kit-feedback" hidden>
+          <p id="kit-status" role="status" aria-live="polite"></p>
+          <a id="kit-link" hidden>Enlace a este kit</a>
+          <button id="kit-retry" type="button" class="button" hidden>
+            Reintentar abrir el kit
+          </button>
+          <details id="kit-warnings" hidden>
+            <summary id="kit-warnings-label">Observaciones del kit</summary>
+            <ul id="kit-warnings-list"></ul>
+          </details>
+        </div>
+        <details id="replay-options" class="replay-options">
+          <summary>Opciones de reproducción</summary>
+          <div class="options-fields">
+            <div class="field">
+              <label for="source">Fuente</label
+              ><select id="source">
+                <option value="demo">Ejemplo ficticio</option>
+                <option value="api" selected>Servidor</option>
+              </select>
+            </div>
+            <div class="field speed-field">
+              <label for="speed">Velocidad</label
+              ><select id="speed">
+                <option value="5">5 min / s</option>
+                <option value="24" selected>1 día / min</option>
+                <option value="60">1 h / s</option>
+              </select>
+            </div>
+          </div>
+        </details>
+        <div class="replay-toolbar">
+          <div class="clock">
+            <div class="replay-label">
+              Revisar datos en el tiempo
+              <span class="status-pill" id="playback-status">En pausa</span>
+            </div>
+            <time id="clock">—</time>
+          </div>
+          <div class="play-controls">
+            <button id="restart" class="button" type="button" disabled>
+              Volver al inicio
+            </button>
+            <button id="play" class="button primary" type="button" disabled>
+              Reproducir
+            </button>
+          </div>
+        </div>
+        <label class="sr-only" for="cursor"
+          >Elegir minuto de la reproducción</label
+        >
+        <input
+          id="cursor"
+          type="range"
+          min="0"
+          max="1"
+          value="0"
+          step="1"
+          disabled
+          aria-describedby="clock-note"
+        />
+        <div class="range-labels">
+          <span id="range-start">—</span
+          ><span id="clock-note">Hora del conjunto de datos</span
+          ><span id="range-end">—</span>
+        </div>
+      </section>
+      <div id="loading" class="loading-line" aria-hidden="true" hidden>
+        Consultando los datos de este minuto…
+      </div>
+      <div id="error" class="error-box" role="alert" hidden>
+        <div>
+          <h2>No pudimos cargar estos datos</h2>
+          <p id="error-message"></p>
+        </div>
+        <button id="retry" type="button" class="button">Reintentar</button>
+      </div>
+      <nav class="section-nav" aria-label="Secciones del monitoreo">
+        <a href="#alerts-section">Alertas</a
+        ><a href="#detail-section">Detalle</a
+        ><a href="#metrics-section">Métricas</a>
+        <span class="download-block" id="download-block" hidden>
+          <a id="download-alerts" download aria-describedby="download-note"
+            >Descargar alertas (CSV)</a
+          >
+          <span id="download-note">Periodo completo</span>
+          <a id="download-all" download>Entrega · todas las empresas (CSV)</a>
+        </span>
+      </nav>
+      <div class="workspace" id="data-view" aria-busy="true">
+        <div class="attention-layout">
+          <aside
+            class="alerts-section"
+            id="alerts-section"
+            tabindex="-1"
+            aria-labelledby="alerts-title"
+          >
+            <div class="section-heading">
+              <h1 id="alerts-title">
+                <svg class="icon alert-icon" aria-hidden="true">
+                  <use href="#icon-alert" /></svg
+                >Alertas <span id="alert-count" class="count">0</span>
+              </h1>
+            </div>
+            <p class="small">Hasta la hora reproducida</p>
+            <p id="selection-status" class="small selection-status" hidden></p>
+            <button
+              id="follow-alerts"
+              class="button follow-alerts"
+              type="button"
+              disabled
+            >
+              Siguiendo la última alerta
+            </button>
+            <div id="alert-list" class="alert-list"></div>
+            <p id="alert-empty" class="empty-state">
+              Sin alertas hasta este momento.
+            </p>
+          </aside>
+          <section
+            class="detail-layout"
+            id="detail-section"
+            tabindex="-1"
+            aria-label="Detalle de la alerta"
+          >
+            <article class="alert-detail" id="alert-detail">
+              <div class="detail-heading">
+                <svg class="icon alert-icon" aria-hidden="true">
+                  <use href="#icon-alert" />
+                </svg>
+                <h2 id="detail-title">Selecciona una alerta</h2>
+              </div>
+              <p id="detail-empty" class="small">
+                Aquí verás qué ocurrió y qué puedes revisar.
+              </p>
+              <div id="detail-content" hidden>
+                <p id="detail-meta" class="small"></p>
+                <p id="detail-summary" class="detail-summary"></p>
+                <div class="action-box">
+                  <h3>Qué puedes revisar</h3>
+                  <ol id="detail-action" class="action-steps"></ol>
+                </div>
+                <div id="focus-metric" class="focus-metric" hidden></div>
+                <details id="detection-details" class="detail-disclosure">
+                  <summary>Cómo se detectó</summary>
+                  <div class="confidence">
+                    <span>Confianza actual</span
+                    ><strong id="detail-confidence">—</strong
+                    ><span class="small"
+                      >Índice provisional; no es probabilidad ni gravedad.</span
+                    >
+                  </div>
+                  <p id="detail-original" class="original-summary"></p>
+                  <h3 class="evidence-title">Evidencia al emitir la alerta</h3>
+                  <ul id="detail-evidence" class="evidence-list"></ul>
+                  <details>
+                    <summary>Registros y actualizaciones</summary>
+                    <ul id="detail-logs" class="evidence-list"></ul>
+                  </details>
+                </details>
+              </div>
+              <details
+                class="phone-panel detail-disclosure"
+                id="impact-details"
+              >
+                <summary id="phone-title">
+                  Nosotros llamamos primero
+                  <span class="small">· Modo demostración</span>
+                  <span id="phone-preview" class="phone-preview" hidden></span>
+                </summary>
+                <p class="impact-label">Modo demostración · impacto estimado</p>
+                <p id="phone-note" class="small">
+                  Selecciona una alerta para revisar su referencia de impacto.
+                </p>
+                <div id="phone-content" hidden>
+                  <div class="phone-times">
+                    <div>
+                      <span>Aviso</span><strong id="phone-alert">—</strong>
+                    </div>
+                    <div>
+                      <span>Impacto estimado</span
+                      ><strong id="phone-impact">—</strong>
+                    </div>
+                  </div>
+                  <div class="lead-time">
+                    <strong id="phone-gain">—</strong
+                    ><span id="phone-gain-label"
+                      >antes del impacto estimado</span
+                    >
+                  </div>
+                  <p id="phone-source" class="small"></p>
+                </div>
+                <button
+                  id="phone-sound"
+                  class="button"
+                  type="button"
+                  aria-pressed="false"
+                >
+                  Activar sonido de demostración
+                </button>
+                <p id="phone-cue" class="small" role="status">
+                  Sonido desactivado. Se puede activar para la reproducción.
+                </p>
+                <p class="phone-caveat">
+                  Una llamada y el inicio del impacto pueden ser momentos
+                  distintos. La medición final requiere una referencia validada.
+                </p>
+              </details>
+              <a class="section-back" href="#alerts-section"
+                >Volver a las alertas</a
+              >
+            </article>
+          </section>
+        </div>
+        <section class="calendar-panel" aria-labelledby="calendar-title">
+          <div class="section-heading">
+            <h2 id="calendar-title">Actividad programada</h2>
+            <span class="sr-only" id="calendar-source"
+              >Agenda pendiente de cargar</span
+            >
+          </div>
+          <div class="context-toolbar">
+            <p class="data-status" id="data-status">
+              Preparando la reproducción…
+            </p>
+            <div class="field window-field">
+              <label for="window">Periodo de la gráfica</label
+              ><select id="window">
+                <option value="6">Últimas 6 horas</option>
+                <option value="24" selected>Últimas 24 horas</option>
+                <option value="all">Todo hasta ahora</option>
+              </select>
+            </div>
+          </div>
+          <div
+            id="calendar-warning"
+            class="calendar-warning"
+            role="status"
+            hidden
+          >
+            <p id="calendar-warning-summary"></p>
+            <ul id="calendar-warnings"></ul>
+          </div>
+          <div class="timeline-axis" aria-hidden="true">
+            <span id="calendar-start">—</span><span id="calendar-end">—</span>
+          </div>
+          <ul id="calendar-list" class="calendar-list"></ul>
+        </section>
+        <details class="metric-section" id="metrics-section" tabindex="-1">
+          <summary id="metrics-title">Ver todas las métricas</summary>
+          <div class="chart-legend" aria-label="Leyenda de las gráficas">
+            <span
+              ><i class="legend-swatch expected"></i>Actividad programada</span
+            ><span><i class="legend-swatch gap"></i>Sin datos</span
+            ><span><i class="legend-line"></i>Alerta emitida</span
+            ><span><i class="legend-line phone"></i>Impacto estimado</span>
+          </div>
+          <div class="metric-grid" id="metric-grid">
+            <article class="metric-card">
+              <div class="metric-heading">
+                <h3>CPU</h3>
+                <p><strong id="value-cpu">—</strong><span>%</span></p>
+              </div>
+              <div class="chart-wrap">
+                <canvas
+                  id="chart-cpu"
+                  role="img"
+                  aria-label="CPU, porcentaje. Los valores también están disponibles en la tabla de lecturas."
+                ></canvas>
+              </div>
+            </article>
+            <article class="metric-card">
+              <div class="metric-heading">
+                <h3>RAM</h3>
+                <p><strong id="value-ram">—</strong><span>%</span></p>
+              </div>
+              <div class="chart-wrap">
+                <canvas
+                  id="chart-ram"
+                  role="img"
+                  aria-label="RAM, porcentaje. Los valores también están disponibles en la tabla de lecturas."
+                ></canvas>
+              </div>
+            </article>
+            <article class="metric-card">
+              <div class="metric-heading">
+                <h3>Disco</h3>
+                <p><strong id="value-disco">—</strong><span>%</span></p>
+              </div>
+              <div class="chart-wrap">
+                <canvas
+                  id="chart-disco"
+                  role="img"
+                  aria-label="Disco, porcentaje. Los valores también están disponibles en la tabla de lecturas."
+                ></canvas>
+              </div>
+            </article>
+            <article class="metric-card metric-wide">
+              <div class="metric-heading">
+                <h3>Tiempo de respuesta</h3>
+                <p><strong id="value-latencia_ms">—</strong><span>ms</span></p>
+              </div>
+              <div class="chart-wrap">
+                <canvas
+                  id="chart-latencia_ms"
+                  role="img"
+                  aria-label="Tiempo de respuesta en milisegundos. Los valores también están disponibles en la tabla de lecturas."
+                ></canvas>
+              </div>
+            </article>
+            <article class="metric-card metric-wide">
+              <div class="metric-heading">
+                <h3>Errores</h3>
+                <p><strong id="value-errores">—</strong><span>/min</span></p>
+              </div>
+              <div class="chart-wrap">
+                <canvas
+                  id="chart-errores"
+                  role="img"
+                  aria-label="Errores por minuto. Los valores también están disponibles en la tabla de lecturas."
+                ></canvas>
+              </div>
+            </article>
+          </div>
+          <details class="readings">
+            <summary>Ver las últimas lecturas en una tabla</summary>
+            <div class="table-wrap">
+              <table>
+                <caption>
+                  Últimas 12 lecturas disponibles en la ventana. «Sin datos» no
+                  equivale a cero.
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Hora</th>
+                    <th scope="col">CPU %</th>
+                    <th scope="col">RAM %</th>
+                    <th scope="col">Disco %</th>
+                    <th scope="col">Tiempo de respuesta (ms)</th>
+                    <th scope="col">Errores/min</th>
+                  </tr>
+                </thead>
+                <tbody id="readings-body"></tbody>
+              </table>
+            </div>
+          </details>
+        </details>
+      </div>
+    </main>
+    <p id="announcement" class="sr-only" aria-live="polite"></p>
+    <noscript
+      ><div class="error-box">
+        Activa JavaScript para reproducir las métricas y consultar las alertas.
+      </div></noscript
+    >
+  </body>
+</html>

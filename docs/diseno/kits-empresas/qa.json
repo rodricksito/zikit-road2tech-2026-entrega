@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-10",
+  "backend_reviewed_head": "9d1e5baf45e2400ab255610770caa542a2b16c07",
+  "status": "local, not merged or deployed",
+  "unit_tests": {
+    "passed": 70,
+    "failed": 0
+  },
+  "browser_tests": {
+    "passed": 33,
+    "failed": 0,
+    "engine": "Chrome"
+  },
+  "viewport_widths": [320, 390, 740, 1024, 1440],
+  "pr26": {
+    "mobile_window_label_fits": true,
+    "calendar_alpha": 0.13,
+    "gap_alpha": 0.18
+  },
+  "real_backend_synthetic_kit": {
+    "checks": [
+      "API oficial 4 empresas",
+      "ZIP sintético sin gracko",
+      "2 empresas nuevas",
+      "alerta memoria",
+      "sin impacto inventado",
+      "descarga CSV individual",
+      "recarga por enlace",
+      "cambio de empresa"
+    ],
+    "console_errors": [],
+    "csv": "tenant,timestamp,confianza,tipo\r\ntaller_norte,2026-11-02T09:00:00,0.6,memoria\r\n"
+  },
+  "limitations": [
+    "No Docker daemon / container build verification",
+    "No full backend suite",
+    "Synthetic kit does not measure detector accuracy"
+  ]
+}

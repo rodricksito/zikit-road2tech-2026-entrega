@@ -1,0 +1,14 @@
+tenant,timestamp,confianza,tipo,familias,en_calendario
+gracko,2026-10-10T10:52:00,0.6,capacidad_disco,nivel_disco,
+gracko,2026-10-12T23:40:00,0.577,seguridad_acceso,err+logs,
+gracko,2026-10-13T20:46:00,0.577,degradacion_rendimiento,nivel_cpu+nivel_latencia_ms,
+gramo,2026-10-09T08:48:00,0.577,trafico_anomalo,logs+nivel_latencia_ms,
+gramo,2026-10-12T23:59:00,0.577,memoria,logs+nivel_ram,
+gramo,2026-10-14T06:11:00,0.708,agotamiento_conexiones,logs+nivel_latencia_ms,
+kaiku,2026-10-11T04:25:00,0.502,degradacion_rendimiento,nivel_latencia_ms,reindexado
+kaiku,2026-10-12T06:31:00,0.577,agotamiento_conexiones,logs,
+kaiku,2026-10-13T19:25:00,0.55,trafico_anomalo,logs,
+ttr,2026-10-09T12:41:00,0.64,red_enlace,logs,
+ttr,2026-10-11T19:56:00,0.577,memoria,err+logs,
+ttr,2026-10-13T06:40:00,0.675,degradacion_rendimiento,nivel_cpu+nivel_latencia_ms,
+ttr,2026-10-14T04:54:00,0.577,base_de_datos,logs+nivel_latencia_ms,

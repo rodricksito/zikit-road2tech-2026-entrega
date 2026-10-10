@@ -1,0 +1,49 @@
+{
+  "aviso": "HIPÓTESIS del equipo deducidas de métricas, logs y contexto.md, sin etiquetas ni _solucion. No son la verdad oficial. impacto = primer ERROR del log de guion. tipo_alerta: tipo del catálogo de alertas que anticipa este impacto (lo usa la API para enlazar la alerta).",
+  "semana": {
+    "inicio": "2026-10-08T08:00:00",
+    "fin": "2026-10-14T17:19:00",
+    "nota": "Semana del kit de la que se dedujeron estas hipótesis (raíz y corridas 01–54). No aplican a otras semanas."
+  },
+  "hipotesis": [
+    {
+      "tenant": "gracko",
+      "tipo": "disco /data lleno",
+      "tipo_alerta": "capacidad_disco",
+      "primer_indicio": "2026-10-09T07:00 (disco 58.0->58.9 al mediodia; log 07:12 archivo nuevo en /data/tmp)",
+      "aceleracion": "2026-10-10T13:05 exportacion masiva en /data/tmp; 63.6 (sab 09h) -> 77 (dom 09:02 WARN) -> 95.7 (dom 21h)",
+      "impacto": "2026-10-11T23:00 respaldo abortado por falta de espacio + 23:01 exportacion fallida",
+      "resolucion": "2026-10-12T00:30 limpieza manual 31 GB",
+      "senales": [
+        "disco",
+        "latencia_ms (+13 el domingo)",
+        "errores (0->0.7/min dom tarde)"
+      ]
+    },
+    {
+      "tenant": "gracko",
+      "tipo": "fuerza bruta VPN / bloqueo de cuentas ERP",
+      "tipo_alerta": "seguridad_acceso",
+      "primer_indicio": "2026-10-12T21:40 fallo de autenticacion VPN; errores 0->~1/min desde 21:45",
+      "impacto": "2026-10-13T00:31 ERROR 37 cuentas bloqueadas; 00:33 WARN 212 intentos desde 203.0.113.0/24",
+      "resolucion": "2026-10-13T02:00 bloqueo manual de la red",
+      "senales": [
+        "errores (~1/min sostenido)",
+        "cpu (+2 a +3)"
+      ]
+    },
+    {
+      "tenant": "gracko",
+      "tipo": "degradacion del ERP (rafagas de cpu y latencia)",
+      "tipo_alerta": "degradacion_rendimiento",
+      "primer_indicio": "2026-10-13T19:00 rafagas alternas cpu ~48 / latencia ~147 cada ~30 min",
+      "impacto": "2026-10-14T09:20 ERROR timeout al capturar poliza (WARN previo 05:30 consultas >3 s)",
+      "resolucion": "2026-10-14T10:05 reinicio del ERP",
+      "senales": [
+        "cpu",
+        "latencia_ms",
+        "errores (~2/min en rafagas)"
+      ]
+    }
+  ]
+}

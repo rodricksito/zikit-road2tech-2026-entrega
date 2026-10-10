@@ -1,0 +1,24 @@
+{
+  "aviso": "Eventos esperados con horas NOMINALES de cada contexto.md. Revisado por una persona. 'palabras' son los sistemas afectados, para reconocer sus líneas de log.",
+  "margen_antes_min": 10,
+  "margen_despues_min": 30,
+  "empresas": {
+    "gracko": [
+      { "evento": "respaldo nocturno", "recurrencia": "diaria", "inicio": "23:00", "duracion_min": 60, "palabras": "respaldo|\\bnas\\b", "fuente": "Respaldo nocturno: copia de /data a NAS, 23:00, diario" },
+      { "evento": "carga masiva", "recurrencia": "unica", "inicio": "2026-10-09T17:00", "duracion_min": 150, "palabras": "carga|declaraciones|disco|/data|limpieza", "fuente": "Viernes 9 de octubre: carga masiva de declaraciones (17:00–19:30)" },
+      { "evento": "cierre de nomina", "recurrencia": "unica", "inicio": "2026-10-12T10:00", "duracion_min": 240, "palabras": "nomina|erp|polizas", "fuente": "Lunes 12 de octubre: cierre de nomina quincenal, 10:00–14:00" }
+    ],
+    "gramo": [
+      { "evento": "promocion 2x1", "recurrencia": "unica", "inicio": "2026-10-09T10:00", "duracion_min": 120, "palabras": "promocion|pedidos", "fuente": "Viernes 9 de octubre, 10:00–12:00: promocion 2x1" },
+      { "evento": "snapshot semanal", "recurrencia": "semanal", "dia": "sabado", "inicio": "03:00", "duracion_min": 90, "palabras": "snapshot|inventario", "fuente": "Sabados: snapshot semanal del inventario, 03:00–04:30" }
+    ],
+    "kaiku": [
+      { "evento": "campana de correo", "recurrencia": "unica", "inicio": "2026-10-09T12:00", "duracion_min": 120, "palabras": "campana|conexiones|checkout", "fuente": "Viernes 9 de octubre, 12:00: campana de correo (pico de unas 2 h)" },
+      { "evento": "reindexado", "recurrencia": "semanal", "dia": "domingo", "inicio": "04:00", "duracion_min": 90, "palabras": "reindexado|catalogo|productos", "fuente": "Domingos 04:00: reindexado del catalogo (unos 90 min)" },
+      { "evento": "respaldo BD", "recurrencia": "diaria", "inicio": "03:00", "duracion_min": 30, "palabras": "respaldo|mysqldump", "fuente": "Diario 03:00: respaldo de la base de datos (30 min)" }
+    ],
+    "ttr": [
+      { "evento": "mantenimiento de red", "recurrencia": "unica", "inicio": "2026-10-10T22:00", "duracion_min": 60, "palabras": "mantenimiento|red|latencia", "fuente": "Sabado 10 de octubre, 22:00–23:00: mantenimiento programado de red" }
+    ]
+  }
+}

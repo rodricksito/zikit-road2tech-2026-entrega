@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ZIKIT · Bocetos de América</title>
+  <style>html{color-scheme:light dark}body{margin:0;background:light-dark(#f4f5f6,#151b21)}</style>
+</head>
+<body>
+<!-- INICIO BOCETO -->
+<div id="zikit-bocetos" lang="es">
+  <style>
+    #zikit-bocetos{--zk-paper:light-dark(#ffffff,#1d252d);--zk-ink:light-dark(#1b2d3c,#e7edf2);--zk-muted:light-dark(#526371,#b0bfcb);--zk-line:light-dark(#dce3e8,#42525f);--zk-soft:light-dark(#f3f6f7,#27333d);--zk-accent:light-dark(#006b63,#72d6c6);--zk-accent-bg:light-dark(#e6f3ef,#183e39);--zk-warn:light-dark(#87500b,#f6c779);--zk-warn-bg:light-dark(#fff2d8,#463419);--zk-danger:light-dark(#a1382f,#ffada5);--zk-gap:light-dark(#e6eaee,#384550);--zk-space:24px;color:var(--zk-ink);font:400 15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;max-width:1100px;margin:auto;color-scheme:light dark;overflow-wrap:anywhere}
+    #zikit-bocetos *{box-sizing:border-box}
+    #zikit-bocetos [hidden]{display:none!important}
+    #zikit-bocetos h1,#zikit-bocetos h2,#zikit-bocetos h3,#zikit-bocetos p{margin:0}
+    #zikit-bocetos h1{font-size:28px;line-height:1.2;font-weight:600;letter-spacing:-.6px}
+    #zikit-bocetos h2{font-size:21px;line-height:1.3;font-weight:600}
+    #zikit-bocetos h3{font-size:16px;font-weight:600}
+    #zikit-bocetos .zk-small{font-size:13px;color:var(--zk-muted)}
+    #zikit-bocetos .zk-eyebrow{font-size:12px;letter-spacing:1px;text-transform:uppercase;font-weight:600;color:var(--zk-muted)}
+    #zikit-bocetos .zk-shell{background:var(--zk-paper);border:1px solid var(--zk-line);border-radius:16px;overflow:hidden}
+    #zikit-bocetos .zk-draft{padding:10px 24px;background:var(--zk-soft);border-bottom:1px solid var(--zk-line);font-size:13px;color:var(--zk-muted)}
+    #zikit-bocetos .zk-header{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:22px 24px}
+    #zikit-bocetos .zk-brand{display:flex;align-items:center;gap:14px}
+    #zikit-bocetos .zk-wordmark{font-size:24px;font-weight:650;letter-spacing:2px;color:var(--zk-accent)}
+    #zikit-bocetos .zk-brand-copy{border-left:1px solid var(--zk-line);padding-left:14px}
+    #zikit-bocetos .zk-picker{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:13px}
+    #zikit-bocetos select{font:inherit;font-size:15px;background:var(--zk-paper);color:var(--zk-ink);padding:10px 34px 10px 12px;border:1px solid var(--zk-line);border-radius:8px;max-width:100%}
+    #zikit-bocetos .zk-nav{display:flex;gap:6px;flex-wrap:wrap;padding:0 24px 16px;border-bottom:1px solid var(--zk-line)}
+    #zikit-bocetos button{font:inherit;background:var(--zk-paper);color:var(--zk-ink);border:1px solid var(--zk-line);padding:10px 14px;border-radius:8px;min-height:44px}
+    #zikit-bocetos button[aria-pressed="true"]{background:var(--zk-ink);color:var(--zk-paper);border-color:var(--zk-ink)}
+    #zikit-bocetos .zk-primary{background:var(--zk-accent);color:var(--zk-paper);border-color:var(--zk-accent)}
+    #zikit-bocetos .zk-content{padding:var(--zk-space);display:grid;gap:20px}
+    #zikit-bocetos .zk-panel{display:grid;gap:20px}
+    #zikit-bocetos .zk-title-row{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;flex-wrap:wrap}
+    #zikit-bocetos .zk-tag{display:inline-block;padding:4px 9px;border-radius:5px;background:var(--zk-warn-bg);color:var(--zk-warn);font-size:12px;font-weight:600;white-space:normal}
+    #zikit-bocetos .zk-card{border:1px solid var(--zk-line);border-radius:12px;padding:22px;display:grid;gap:18px}
+    #zikit-bocetos .zk-alert{border-left:4px solid var(--zk-warn)}
+    #zikit-bocetos .zk-alert-top{display:grid;grid-template-columns:minmax(0,1fr) 170px;gap:26px;align-items:start}
+    #zikit-bocetos .zk-stack{display:grid;gap:8px}
+    #zikit-bocetos .zk-score{border-left:1px solid var(--zk-line);padding-left:20px}
+    #zikit-bocetos .zk-number{font-size:38px;font-weight:600;line-height:1.1;letter-spacing:-1px;font-variant-numeric:tabular-nums}
+    #zikit-bocetos .zk-why{border-top:1px solid var(--zk-line);padding-top:18px;display:grid;gap:8px}
+    #zikit-bocetos .zk-evidence{margin:0;padding-left:20px;display:grid;gap:5px}
+    #zikit-bocetos .zk-context{background:var(--zk-soft);border-radius:8px;padding:14px 16px;display:grid;gap:5px}
+    #zikit-bocetos .zk-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+    #zikit-bocetos .zk-cutoff{color:var(--zk-accent);font-size:13px;font-weight:600}
+    #zikit-bocetos .zk-plot{width:100%;min-width:0}
+    #zikit-bocetos .zk-plot svg{display:block;width:100%;overflow:visible}
+    #zikit-bocetos .zk-chart-caption{display:flex;gap:14px;justify-content:space-between;flex-wrap:wrap;color:var(--zk-muted);font-size:12px}
+    #zikit-bocetos .zk-calendar{border-left:4px solid var(--zk-accent);padding:11px 14px;background:var(--zk-accent-bg);border-radius:0 6px 6px 0;display:grid;gap:3px}
+    #zikit-bocetos .zk-timeline{list-style:none;margin:0;padding:0;display:grid}
+    #zikit-bocetos .zk-timeline li{display:grid;grid-template-columns:62px minmax(0,1fr);gap:12px;padding:13px 0;border-bottom:1px solid var(--zk-line)}
+    #zikit-bocetos .zk-timeline li:last-child{border-bottom:0}
+    #zikit-bocetos .zk-timeline time{font-size:13px;font-weight:600;font-variant-numeric:tabular-nums}
+    #zikit-bocetos .zk-timeline li[data-kind="alerta"] time{color:var(--zk-danger)}
+    #zikit-bocetos .zk-timeline li[data-kind="evento"] time{color:var(--zk-accent)}
+    #zikit-bocetos .zk-demo-split{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    #zikit-bocetos .zk-demo-point{padding:18px 0;border-bottom:2px solid var(--zk-line);display:grid;gap:8px}
+    #zikit-bocetos .zk-demo-point:first-child{border-color:var(--zk-accent)}
+    #zikit-bocetos .zk-demo-result{background:var(--zk-accent-bg);padding:22px;border-radius:10px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+    #zikit-bocetos .zk-demo-result .zk-number{color:var(--zk-accent)}
+    #zikit-bocetos .zk-footnote{padding:16px 24px;border-top:1px solid var(--zk-line);font-size:12px;color:var(--zk-muted)}
+    #zikit-bocetos .zk-states{padding:0 24px 20px;background:var(--zk-paper)}
+    #zikit-bocetos summary{font-size:13px;padding:12px 0;color:var(--zk-muted)}
+    #zikit-bocetos .zk-states-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+    #zikit-bocetos .zk-state{padding:14px;border:1px dashed var(--zk-line);border-radius:8px;display:grid;gap:6px}
+    #zikit-bocetos .zk-state h3{font-size:14px}
+    @media(max-width:580px){#zikit-bocetos .zk-header,#zikit-bocetos .zk-content{padding:18px}#zikit-bocetos .zk-draft,#zikit-bocetos .zk-footnote{padding:12px 18px}#zikit-bocetos .zk-nav{padding:0 18px 14px}#zikit-bocetos .zk-brand-copy{display:none}#zikit-bocetos .zk-header{gap:12px}#zikit-bocetos .zk-picker{width:100%;justify-content:space-between}#zikit-bocetos .zk-alert-top{grid-template-columns:1fr;gap:18px}#zikit-bocetos .zk-score{border-left:0;border-top:1px solid var(--zk-line);padding:14px 0 0}#zikit-bocetos .zk-card{padding:16px}#zikit-bocetos h1{font-size:25px}#zikit-bocetos .zk-demo-split{grid-template-columns:1fr;gap:4px}#zikit-bocetos .zk-states-grid{grid-template-columns:1fr}#zikit-bocetos .zk-states{padding:0 18px 16px}}
+  </style>
+  <div class="zk-shell">
+    <div class="zk-draft">PROPUESTA VISUAL · Todos los valores y las alertas son ficticios.</div>
+    <header class="zk-header">
+      <div class="zk-brand"><div class="zk-wordmark">ZIKIT</div><div class="zk-brand-copy zk-small">Antes de que<br>suene el teléfono</div></div>
+      <label class="zk-picker" for="zk-company">Empresa <select id="zk-company"><option value="gramo">gramo · Alimentos</option><option value="gracko">gracko · Contabilidad</option><option value="kaiku">kaiku · Tienda en línea</option><option value="ttr">ttr · Logística</option></select></label>
+    </header>
+    <nav class="zk-nav" aria-label="Vistas del boceto">
+      <button type="button" data-view="alerta" aria-pressed="true" aria-controls="zk-alerta" class="cursor-interaction">Alerta</button>
+      <button type="button" data-view="tiempo" aria-pressed="false" aria-controls="zk-tiempo" class="cursor-interaction">Línea de tiempo</button>
+      <button type="button" data-view="demo" aria-pressed="false" aria-controls="zk-demo" class="cursor-interaction">Demo ilustrativa</button>
+    </nav>
+    <main class="zk-content">
+      <section id="zk-alerta" class="zk-panel" aria-label="Boceto de tarjeta de alerta">
+        <div class="zk-title-row"><div class="zk-stack"><p class="zk-eyebrow">Qué necesita atención</p><h1>Una señal para revisar</h1></div><span class="zk-tag">Alerta abierta · ficticia</span></div>
+        <article class="zk-card zk-alert">
+          <div class="zk-alert-top">
+            <div class="zk-stack"><p class="zk-small" data-slot="alert-meta"></p><h2 data-slot="headline"></h2><p data-slot="summary"></p><p class="zk-small">Tipo probable: <span data-slot="type"></span></p></div>
+            <div class="zk-score zk-stack"><p class="zk-small">Puntaje de confianza</p><p class="zk-number">0.70</p><p>Media · provisional</p><p class="zk-small">No equivale a 70 % de probabilidad.</p></div>
+          </div>
+          <div class="zk-why"><h3>Por qué se disparó</h3><ul class="zk-evidence"><li data-slot="evidence-a"></li><li data-slot="evidence-b"></li></ul><p class="zk-cutoff" data-slot="cutoff"></p></div>
+          <div class="zk-context"><h3>También hay un evento programado</h3><p data-slot="calendar-label"></p><p class="zk-small">Explica parte de la carga. La señal adicional sigue necesitando revisión.</p></div>
+          <div class="zk-actions"><button type="button" class="zk-primary cursor-interaction" data-go="tiempo">Revisar evidencia</button><span class="zk-small">Abrir métricas y contexto</span></div>
+        </article>
+      </section>
+      <section id="zk-tiempo" class="zk-panel" aria-label="Boceto de línea de tiempo" hidden>
+        <div class="zk-title-row"><div class="zk-stack"><p class="zk-eyebrow">Qué pasó y cuándo</p><h1>Señales con contexto</h1></div><span class="zk-cutoff" data-slot="cutoff"></span></div>
+        <div class="zk-card">
+          <div class="zk-title-row"><h2 data-slot="timeline-title"></h2><span class="zk-small">Métricas ficticias</span></div>
+          <div class="zk-calendar"><h3 data-slot="calendar-name"></h3><p class="zk-small" data-slot="calendar-range"></p></div>
+          <div><p class="zk-small" data-slot="metric-label"></p><div id="zk-plot" class="zk-plot"></div><div class="zk-chart-caption"><span>Hora del dataset · zona no definida</span><span data-slot="gap-caption"></span></div></div>
+          <ol class="zk-timeline">
+            <li data-kind="evento"><time data-slot="time-04"></time><div><h3>Evento esperado · sin alerta en este ejemplo</h3><p class="zk-small" data-slot="normal-reason"></p></div></li>
+            <li data-kind="gap"><time data-slot="time-08"></time><div><h3>Sin datos</h3><p class="zk-small">Faltan mediciones. El tramo queda vacío; no se interpreta como cero ni como normal.</p></div></li>
+            <li data-kind="alerta"><time data-slot="time-20"></time><div><h3>Alerta · aparece evidencia adicional</h3><p class="zk-small" data-slot="evidence-a"></p></div></li>
+          </ol>
+          <div class="zk-actions"><button type="button" data-go="alerta" class="cursor-interaction">Ver tarjeta</button><button type="button" data-go="demo" class="zk-primary cursor-interaction">Ver demo ilustrativa</button></div>
+        </div>
+      </section>
+      <section id="zk-demo" class="zk-panel" aria-label="Boceto de demo retrospectiva" hidden>
+        <div class="zk-title-row"><div class="zk-stack"><p class="zk-eyebrow">Cómo explicar el valor</p><h1>Tiempo para actuar</h1></div><span class="zk-tag">Hipótesis · no es un resultado medido</span></div>
+        <article class="zk-card">
+          <div class="zk-stack"><h2 data-slot="demo-title"></h2><p class="zk-small">Comparación retrospectiva con horas inventadas para revisar el diseño.</p></div>
+          <div class="zk-demo-split">
+            <div class="zk-demo-point"><p class="zk-eyebrow">Avisamos</p><p class="zk-number" data-slot="time-20"></p><p>Alerta ficticia</p><p class="zk-small">Solo con señales hasta esta hora.</p></div>
+            <div class="zk-demo-point"><p class="zk-eyebrow">El cliente habría llamado</p><p class="zk-number" data-slot="time-60"></p><p>Referencia hipotética</p><p class="zk-small">No disponible para la detección.</p></div>
+          </div>
+          <div class="zk-demo-result"><p class="zk-number">40 min</p><div><h3>Anticipación ilustrativa</h3><p class="zk-small" data-slot="demo-formula"></p></div></div>
+          <div class="zk-context"><h3>Para mostrar una medición real</h3><p>Falta una hora de impacto validada y su fuente. Sin esa referencia, la anticipación será «No disponible».</p><p class="zk-small">La hora de una llamada y la hora del impacto no se consideran equivalentes automáticamente.</p></div>
+          <div class="zk-actions"><button type="button" data-go="tiempo" class="cursor-interaction">Volver a la evidencia</button></div>
+        </article>
+      </section>
+    </main>
+    <details class="zk-states"><summary>Otros estados que debe comunicar la interfaz</summary><div class="zk-states-grid"><div class="zk-state"><h3>Cargando datos</h3><p class="zk-small">Aún no hay información para evaluar este tramo.</p></div><div class="zk-state"><h3>Sin datos</h3><p class="zk-small">No hay mediciones disponibles. No se muestra «sin incidentes».</p></div><div class="zk-state"><h3>Error de carga</h3><p class="zk-small">No se pudo leer el archivo. La acción propuesta es revisarlo y volver a cargarlo.</p></div></div></details>
+    <footer class="zk-footnote">Agenda basada en contexto.md · Propuesta para revisión de América y el equipo · Sin conexión al detector.</footer>
+    <span id="zk-announcement" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)"></span>
+  </div>
+  <script>
+    (() => {
+      const root = document.getElementById('zikit-bocetos');
+      const scenarios = {
+        gramo:{name:'gramo',date:'09 oct 2026',hour:10,event:'Promoción 2x1',end:'12:00',business:'Distribuidora de alimentos',headline:'La memoria sigue subiendo en pedidos',type:'Memoria',summary:'El aumento de pedidos era esperado. El crecimiento de memoria añade una señal que conviene revisar.',a:'RAM: de 70 % a 91 % entre 10:12 y 10:20.',b:'Registro ficticio a las 10:18: pedidos-worker mantiene la cola en espera.',normal:'10:04 · latencia de 140 ms durante la promoción, sin evidencia adicional en este ejemplo.',metric:'RAM',unit:'%',values:[55,57,59,null,null,68,70,80,91]},
+        gracko:{name:'gracko',date:'12 oct 2026',hour:10,event:'Cierre de nómina',end:'14:00',business:'Despacho contable',headline:'El espacio de disco necesita revisión',type:'Capacidad de disco',summary:'La nómina explica más carga en el ERP. El crecimiento del disco es una señal adicional.',a:'Disco /data: de 80 % a 93 % entre 10:12 y 10:20.',b:'Registro ficticio a las 10:18: la escritura de archivos tarda más.',normal:'10:04 · latencia de 130 ms durante el cierre, sin evidencia adicional en este ejemplo.',metric:'Disco /data',unit:'%',values:[68,70,72,null,null,79,80,85,93]},
+        kaiku:{name:'kaiku',date:'09 oct 2026',hour:12,event:'Campaña «Otoño de café»',end:'14:00 aprox.',business:'Tienda en línea',headline:'El checkout tarda cada vez más',type:'Agotamiento de conexiones',summary:'La campaña explica el tráfico adicional. Un registro del checkout añade evidencia que requiere revisión.',a:'Latencia: de 160 ms a 280 ms entre 12:12 y 12:20.',b:'Registro ficticio a las 12:18: conexiones del checkout en espera.',normal:'12:04 · latencia de 145 ms durante la campaña, sin evidencia adicional en este ejemplo.',metric:'Latencia',unit:'ms',values:[65,145,150,null,null,158,160,215,280]},
+        ttr:{name:'ttr',date:'10 oct 2026',hour:22,event:'Mantenimiento programado de red',end:'23:00',business:'Logística',headline:'El servidor compartido necesita revisión',type:'Memoria',summary:'La ventana de red explica más latencia. La subida de RAM requiere una revisión aparte.',a:'RAM de srv-tms-01: de 68 % a 92 % entre 22:12 y 22:20.',b:'Registro ficticio a las 22:18: memoria del servidor cercana al límite.',normal:'22:04 · latencia de 125 ms durante el mantenimiento, sin evidencia adicional en este ejemplo.',metric:'RAM',unit:'%',values:[51,53,55,null,null,66,68,79,92]}
+      };
+      let company = 'gramo';
+      let view = 'alerta';
+      const picker = root.querySelector('#zk-company');
+      const labels = {alerta:'Alerta',tiempo:'Línea de tiempo',demo:'Demo ilustrativa'};
+      const time = (s,minute) => String(s.hour + Math.floor(minute/60)).padStart(2,'0') + ':' + String(minute%60).padStart(2,'0');
+      const fill = (name,value) => root.querySelectorAll('[data-slot="'+name+'"]').forEach(el => el.textContent = value);
+      function remember() {
+        if (window.openai?.setWidgetState) window.openai.setWidgetState({modelContent:{empresa:company,vista:labels[view],datos:'ficticios'},privateContent:{company,view}}).catch(()=>{});
+      }
+      function chart() {
+        if(view !== 'tiempo') return;
+        const holder = root.querySelector('#zk-plot');
+        const s = scenarios[company];
+        const width = Math.max(180, holder.getBoundingClientRect().width);
+        const height = 190, left = 42, right = 20, top = 16, bottom = 32;
+        const max = s.unit==='%' ? 100 : Math.ceil(Math.max(...s.values.filter(v=>v!==null))*1.15/50)*50;
+        const x = m => left + m/20*(width-left-right);
+        const y = v => height-bottom-v/max*(height-top-bottom);
+        const minutes = [0,4,7,8,10,11,12,16,20];
+        let path = '', start = true;
+        s.values.forEach((value,i)=>{ if(value===null){start=true;return;} path += (start?'M':'L') + x(minutes[i])+','+y(value)+' '; start=false; });
+        const ticks = [0,max/2,max].map(value=>'<line x1="'+left+'" y1="'+y(value)+'" x2="'+(width-right)+'" y2="'+y(value)+'" stroke="var(--zk-line)"/><text x="'+(left-8)+'" y="'+(y(value)+4)+'" text-anchor="end">'+value+'</text>').join('');
+        const times = [0,10,20].map(m=>'<text x="'+x(m)+'" y="'+(height-9)+'" text-anchor="'+(m===0?'start':m===20?'end':'middle')+'">'+time(s,m)+'</text>').join('');
+        holder.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="'+width+'" height="'+height+'" viewBox="0 0 '+width+' '+height+'" role="img" aria-label="'+s.metric+' ficticia de '+s.name+' hasta '+time(s,20)+', con un tramo sin datos. No contiene mediciones futuras." style="font:12px -apple-system,BlinkMacSystemFont,sans-serif;fill:var(--zk-ink)"><title>'+s.metric+' ficticia · '+s.name+'</title>'+ticks+'<rect x="'+x(7)+'" y="'+top+'" width="'+(x(11)-x(7))+'" height="'+(height-top-bottom)+'" fill="var(--zk-gap)"/><path d="'+path+'" fill="none" stroke="var(--zk-accent)" stroke-width="2.5"/><circle cx="'+x(20)+'" cy="'+y(s.values[8])+'" r="4" fill="var(--zk-danger)"/><text x="'+(x(20)-9)+'" y="'+(y(s.values[8])-10)+'" text-anchor="end">'+s.values[8]+' '+s.unit+'</text>'+times+'</svg>';
+      }
+      function render() {
+        const s = scenarios[company];
+        picker.value = company;
+        root.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view===view)));
+        ['alerta','tiempo','demo'].forEach(name=>root.querySelector('#zk-'+name).hidden=name!==view);
+        fill('alert-meta',s.name+' · '+s.business+' · '+s.date+' · '+time(s,20));
+        fill('headline',s.headline);fill('summary',s.summary);fill('type',s.type);
+        fill('evidence-a',s.a);fill('evidence-b',s.b);
+        fill('cutoff','Datos hasta '+time(s,20)+' · '+s.date);
+        fill('calendar-label',s.event+' · '+time(s,0)+'–'+s.end);
+        fill('calendar-name',s.event);
+        fill('calendar-range',s.date+' · '+time(s,0)+'–'+s.end+' · agenda de contexto.md');
+        fill('timeline-title',s.name+' · '+s.date);
+        fill('metric-label',s.metric+' ('+s.unit+') · señal principal de la alerta');
+        fill('gap-caption',time(s,7)+'–'+time(s,11)+' · sin lecturas intermedias');
+        fill('normal-reason',s.normal);
+        [4,8,20,60].forEach(m=>fill('time-'+String(m).padStart(2,'0'),time(s,m)));
+        fill('demo-title',s.name+' · '+s.date);
+        fill('demo-formula',time(s,60)+' − '+time(s,20)+' · ejemplo ficticio');
+        chart();
+      }
+      function navigate(next) {
+        view=next;render();remember();
+        root.querySelector('#zk-announcement').textContent=labels[view]+' · '+company+' · datos ficticios';
+      }
+      root.querySelectorAll('[data-view]').forEach(button=>button.addEventListener('click',()=>navigate(button.dataset.view)));
+      root.querySelectorAll('[data-go]').forEach(button=>button.addEventListener('click',()=>{navigate(button.dataset.go);root.querySelector('[data-view="'+view+'"]').focus();}));
+      picker.addEventListener('change',()=>{company=picker.value;render();remember();root.querySelector('#zk-announcement').textContent=company+' · '+labels[view]+' · datos ficticios';});
+      function restore(state){const saved=state?.privateContent;if(saved&&scenarios[saved.company]&&labels[saved.view]){company=saved.company;view=saved.view;}render();}
+      restore(window.openai?.widgetState);
+      window.addEventListener('openai:set_globals',event=>{if(event.detail?.globals?.widgetState)restore(event.detail.globals.widgetState);});
+      new ResizeObserver(chart).observe(root.querySelector('#zk-plot'));
+      if(globalThis.Tweak){const layout={espacio:24};const tweak=new Tweak({container:root,onChange:()=>root.style.setProperty('--zk-space',layout.espacio+'px')});tweak.addSlider(layout,'espacio',{label:'Espacio entre borde y contenido',min:16,max:32,unit:'px'});}
+    })();
+  </script>
+</div>
+<!-- FIN BOCETO -->
+</body>
+</html>

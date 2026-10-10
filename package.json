@@ -1,0 +1,11 @@
+{
+  "name": "zikit-gracko-frontend",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/frontend-data.test.mjs tests/frontend-presentation.test.mjs tests/frontend-kit.test.mjs tests/frontend-charts.test.mjs",
+    "test:browser": "node --test tests/frontend-browser.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1"
+  }
+}

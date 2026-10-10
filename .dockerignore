@@ -1,0 +1,17 @@
+# Solo entran backend/, web/, docs/ejemplos/ y deploy/ (ver Dockerfile); lo demás no se envía.
+.git
+.github
+.claude
+.venv
+venv
+.env
+.env.*
+**/__pycache__
+**/*.pyc
+**/.pytest_cache
+**/.DS_Store
+backend/salida
+node_modules
+tests
+docs/diseno
+*.zip

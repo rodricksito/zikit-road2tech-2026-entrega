@@ -1,0 +1,15 @@
+tenant,timestamp,confianza,tipo
+gramo,2026-10-09T08:26:00,0.577,trafico_anomalo
+kaiku,2026-10-09T12:21:00,0.519,anomalia_generica
+ttr,2026-10-09T12:41:00,0.751,red_enlace
+gracko,2026-10-10T11:55:00,0.575,capacidad_disco
+kaiku,2026-10-10T23:49:00,0.577,base_de_datos
+ttr,2026-10-11T19:51:00,0.577,memoria
+kaiku,2026-10-12T01:53:00,0.577,agotamiento_conexiones
+gracko,2026-10-12T23:14:00,0.577,seguridad_acceso
+gramo,2026-10-13T00:38:00,0.577,memoria
+ttr,2026-10-13T06:25:00,0.577,degradacion_rendimiento
+kaiku,2026-10-13T19:25:00,0.55,trafico_anomalo
+gracko,2026-10-13T20:46:00,0.577,degradacion_rendimiento
+ttr,2026-10-14T04:53:00,0.577,base_de_datos
+gramo,2026-10-14T06:11:00,0.708,agotamiento_conexiones

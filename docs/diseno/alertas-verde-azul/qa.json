@@ -1,0 +1,41 @@
+{
+  "widths": [
+    {
+      "width": 320,
+      "scroll": 320,
+      "overflow": []
+    },
+    {
+      "width": 390,
+      "scroll": 390,
+      "overflow": []
+    },
+    {
+      "width": 740,
+      "scroll": 740,
+      "overflow": []
+    },
+    {
+      "width": 1024,
+      "scroll": 1024,
+      "overflow": []
+    },
+    {
+      "width": 1440,
+      "scroll": 1440,
+      "overflow": []
+    }
+  ],
+  "errors": [],
+  "contrast": {
+    "checked": 178,
+    "minimum": {
+      "selector": "#playback-status",
+      "text": "En pausa",
+      "ratio": 4.9,
+      "required": 4.5,
+      "font": 13
+    },
+    "failures": []
+  }
+}

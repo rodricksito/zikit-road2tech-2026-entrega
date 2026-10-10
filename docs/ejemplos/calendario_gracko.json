@@ -1,0 +1,35 @@
+{
+  "aviso": "Copia de referencia. La fuente vigente es backend/config/calendario.json (horas NOMINALES de contexto.md). El respaldo no dice duración; se usan 60 min. Margen: 10 min antes y 30 min después.",
+  "tenant": "gracko",
+  "eventos": [
+    {
+      "evento": "respaldo nocturno",
+      "recurrencia": "diaria",
+      "inicio": "23:00",
+      "duracion_min": 60,
+      "sistemas": [
+        "fs-01",
+        "NAS"
+      ]
+    },
+    {
+      "evento": "carga masiva de declaraciones",
+      "recurrencia": "unica",
+      "inicio": "2026-10-09T17:00:00",
+      "fin": "2026-10-09T19:30:00",
+      "sistemas": [
+        "/data",
+        "ERP"
+      ]
+    },
+    {
+      "evento": "cierre de nomina quincenal",
+      "recurrencia": "unica",
+      "inicio": "2026-10-12T10:00:00",
+      "fin": "2026-10-12T14:00:00",
+      "sistemas": [
+        "ERP"
+      ]
+    }
+  ]
+}
